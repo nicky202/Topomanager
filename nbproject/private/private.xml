@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/wamp64/www/topomanager/application/views/authentification/inscription.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/views/templates/header_inscription.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/views/dashboard/dashboard.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/views/templates/footer_inscription.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/views/templates/scripts.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/config/config.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/controllers/authentification/Utilisateur.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/config/database.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/config/hooks.php</file>
+            <file>file:/C:/wamp64/www/topomanager/assets/js/scripts.js</file>
+            <file>file:/C:/wamp64/www/topomanager/application/controllers/Login.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/controllers/entites/Direction.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/config/constants.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/views/authentification/login.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/config/routes.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/views/templates/sidebar.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/controllers/dashboard/Dashboard.php</file>
+            <file>file:/C:/wamp64/www/topomanager/application/views/templates/header.php</file>
+        </group>
+    </open-files>
+</project-private>
