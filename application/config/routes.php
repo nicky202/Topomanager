@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'login';
 //routes utilisateurs
 $route['list_user'] = 'authentification/utilisateur/list_utilisateur';
+$route['login'] = '/authentification/utilisateur/login';
 //fin route utilisateur
 //
 //routes groupe ou type utilisateur

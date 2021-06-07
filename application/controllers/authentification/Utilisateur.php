@@ -53,7 +53,7 @@ class Utilisateur extends CI_Controller {
 	//Valider ou devalider une incription
 	public function change_state_signup($state=0, $id = null){
 		$query = $this->usermodel->validate_sign_up($state, $id);
-		redirect('/authentification/utilisateur/list_utilisateur', 'refresh');
+		redirect('list_user', 'refresh');
 	}
 
 	public function check_login(){
@@ -71,7 +71,7 @@ class Utilisateur extends CI_Controller {
 				}else{
 					$this->session->set_userdata('login', $row->login);
 					$this->session->set_userdata('groupe', $row->libelle_type_utilisateur);
-					redirect('/dashboard/dashboard/view_dashboard', 'refresh');
+					redirect('dashboard', 'refresh');
 				}
 			}
 		}
@@ -81,6 +81,6 @@ class Utilisateur extends CI_Controller {
 	public function deconnexion()
 	{
 		$this->session->sess_destroy();
-		redirect('/authentification/utilisateur/login', 'refresh');
+		redirect('login', 'refresh');
 	}
 }
