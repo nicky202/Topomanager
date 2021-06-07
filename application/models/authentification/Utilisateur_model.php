@@ -8,13 +8,13 @@ class Utilisateur_model extends CI_Model {
 
 	public function commit_inscription(){
 		$data = array();
-		$data['nom'] = trim($this->input->post('nom'));
-		$data['prenom'] = trim($this->input->post('prenom'));
-		$data['email'] = trim($this->input->post('email'));
-		$data['login'] = trim($this->input->post('login'));
-		$data['mdp'] = trim($this->input->post('mdp'));
-		$data['mdp_confirm'] = trim($this->input->post('mdp_confirm'));
-		$data['groupe_id'] = trim($this->input->post('groupe_select'));
+		$data['nom'] = trim(xss_clean($this->input->post('nom')));
+		$data['prenom'] = trim(xss_clean($this->input->post('prenom')));
+		$data['email'] = trim(xss_clean($this->input->post('email')));
+		$data['login'] = trim(xss_clean($this->input->post('login')));
+		$data['mdp'] = trim(xss_clean($this->input->post('mdp')));
+		$data['mdp_confirm'] = trim(xss_clean($this->input->post('mdp_confirm')));
+		$data['groupe_id'] = trim(xss_clean($this->input->post('groupe_select')));
 
 		$data = array('nom' => $data['nom'],
 			'prenom' => $data['prenom'],

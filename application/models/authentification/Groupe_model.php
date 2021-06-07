@@ -7,7 +7,7 @@ class Groupe_model extends CI_Model {
 	}
 
 	public function insert_group(){
-		$libelle_type_utilisateur = trim($this->input->post('groupe'));
+		$libelle_type_utilisateur = trim(xss_clean($this->input->post('groupe')));
 		if (!empty($libelle_type_utilisateur)){
 			$data = array('libelle_type_utilisateur' => $libelle_type_utilisateur);
 			$this->db->insert('type_utilisateur', $data);
@@ -21,7 +21,7 @@ class Groupe_model extends CI_Model {
 	}
 
 	public function list_group(){
-		$libelle_type_utilisateur = trim($this->input->post('groupe'));
+		$libelle_type_utilisateur = trim(xss_clean($this->input->post('groupe')));
 
 		if(!empty($libelle_type_utilisateur)){
 			return $this->db->select(array('idtype_utilisateur','libelle_type_utilisateur'))
@@ -41,7 +41,7 @@ class Groupe_model extends CI_Model {
 
 	public function update_group(){
 
-		$libelle_type_utilisateur = trim($this->input->post('groupe'));
+		$libelle_type_utilisateur = trim(xss_clean($this->input->post('groupe')));
 
 		//$data = array('libelle_type_utilisateur' => $libelle_type_utilisateur);
 		$id = trim($this->input->post('id'));

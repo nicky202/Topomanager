@@ -7,6 +7,7 @@ class Utilisateur extends CI_Controller {
 		$this->load->database();
 		$this->load->helper("url");
 		$this->load->helper("form");
+                $this->load->helper("security");
 		$this->load->model("/authentification/Groupe_model", "groupemodel");
 		$this->load->model('/authentification/Utilisateur_model', "usermodel");
 	}
