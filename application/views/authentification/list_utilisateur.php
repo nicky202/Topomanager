@@ -72,8 +72,9 @@
 								</td>
 								<td>
 									<div class="btn-group">
-										<a class="btn btn-success" href="<?php echo base_url();?>authentification/utilisateur/change_state_signup/1/<?php echo $row->id_utilisateur; ?>"><i class="icon_box-checked"></i></a>
-										<a class="btn btn-danger" href="<?php echo base_url();?>authentification/utilisateur/change_state_signup/0/<?php echo $row->id_utilisateur; ?>"><i class="icon_blocked"></i></a>
+										<!--<a class="btn btn-success" href="<?php echo base_url();?>authentification/utilisateur/change_state_signup/1/<?php echo $row->id_utilisateur; ?>"><i class="icon_box-checked"></i></a>-->
+                                                                                <a class="btn btn-success" href="<?php echo site_url('chgstate_user/1/'.$row->id_utilisateur);?>"><i class="icon_box-checked"></i></a>
+										<a class="btn btn-danger" href="<?php echo site_url('chgstate_user/0/'.$row->id_utilisateur);?>"><i class="icon_blocked"></i></a>
 										<!--<a class="btn btn-danger" href="<?php echo base_url();?>authentification/groupe/delete_group/<?//php echo $row->idtype_utilisateur; ?>"><i class="icon_close_alt2"></i></a>-->
 									</div>
 								</td>

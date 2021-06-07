@@ -53,6 +53,7 @@ $route['default_controller'] = 'login';
 //routes utilisateurs
 $route['list_user'] = 'authentification/utilisateur/list_utilisateur';
 $route['login'] = '/authentification/utilisateur/login';
+$route['chgstate_user/(:num)/(:num)'] = 'authentification/utilisateur/change_state_signup/$1/$2';
 //fin route utilisateur
 //
 //routes groupe ou type utilisateur
@@ -62,6 +63,8 @@ $route['update_group'] = 'authentification/groupe/update_group';
 $route['edit_group/(:num)'] = 'authentification/groupe/edit_group/$1';
 $route['delete_group/(:num)'] = 'authentification/groupe/delete_group/$1';
 //fin route grupe ou type utilisateur
+//routes tableau de bord
 $route['dashboard'] = 'dashboard/dashboard/view_dashboard';
+// fin routes tableau de bord
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
