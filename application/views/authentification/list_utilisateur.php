@@ -23,11 +23,11 @@
 						<?php
 						$attr = array('class'=>'form-inline',
 							'role'=>'form');
-						echo form_open('/authentification/Groupe/list_group', $attr);
+						echo form_open('list_user', $attr);
 						?>
 						<!--<form class="form-inline" role="form" action="./authentification/Groupe/list_group">-->
 						<div class="form-group">
-							<label class="sr-only" for="nom">Type Utilisateur</label>
+							<label class="sr-only" for="nom">Utilisateur</label>
 							<input type="text" class="form-control" id="nom" placeholder="Nom utilisateur" name="nom">
 						</div>
 

@@ -4,7 +4,7 @@
 		<!-- sidebar menu start-->
 		<ul class="sidebar-menu">
 			<li class="active">
-				<a class="" href="<?php echo base_url();?>dashboard/dashboard/view_dashboard">
+				<a class="" href="<?php echo site_url('dashboard');?>">
 					<i class="icon_tags_alt"></i>
 					<span>Tableau de bord</span>
 				</a>
@@ -16,8 +16,8 @@
 					<span class="menu-arrow arrow_carrot-right"></span>
 				</a>
 				<ul class="sub">
-					<li><a class="" href="<?php echo base_url();?>authentification/utilisateur/list_utilisateur">Utilisateurs</a></li>
-					<li><a class="" href="<?php echo base_url();?>authentification/groupe/list_group">Types utilisateur</a></li>
+					<li><a class="" href="<?php echo site_url('list_user');?>">Utilisateurs</a></li>
+					<li><a class="" href="<?php echo site_url('list_group');?>">Types utilisateur</a></li>
 				</ul>
 			</li>
 			<li class="sub-menu">

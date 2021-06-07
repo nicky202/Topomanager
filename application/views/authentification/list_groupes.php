@@ -24,7 +24,7 @@
 						<?php
 						$attr = array('class'=>'form-inline',
 								'role'=>'form');
-						echo form_open('/authentification/Groupe/list_group', $attr);
+						echo form_open('list_group', $attr);
 						?>
 						<!--<form class="form-inline" role="form" action="./authentification/Groupe/list_group">-->
 							<div class="form-group">

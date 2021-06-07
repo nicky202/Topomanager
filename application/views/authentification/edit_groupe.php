@@ -37,7 +37,7 @@ if (! $success){
               <div class="panel-body">
 				<?php  if (isset($success)){
 					if (! $success) {
-				  echo form_open('/authentification/Groupe/new_group', "role=form");
+				  echo form_open('new_group', "role=form");
 					?>
                 <!--<form role="form">-->
                   <div class="form-group">
@@ -51,7 +51,7 @@ if (! $success){
 				  } ?>
 
 				  <?php if (isset($result)){
-				  echo form_open('/authentification/Groupe/update_group', "role=form");
+				  echo form_open('update_group', "role=form");
 					  foreach ($result as $row) {
 						  $libelle = $row->libelle_type_utilisateur;
 						  $id = $row->idtype_utilisateur;
