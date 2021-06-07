@@ -54,6 +54,8 @@ $route['default_controller'] = 'login';
 $route['list_user'] = 'authentification/utilisateur/list_utilisateur';
 $route['login'] = '/authentification/utilisateur/login';
 $route['chgstate_user/(:num)/(:num)'] = 'authentification/utilisateur/change_state_signup/$1/$2';
+$route['check_login'] = 'authentification/utilisateur/check_login';
+$route['inscription'] = 'authentification/utilisateur/inscription';
 //fin route utilisateur
 //
 //routes groupe ou type utilisateur

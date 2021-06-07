@@ -42,9 +42,10 @@
 <div class="container">
 
 
-	<form class="login-form" action="<?php echo base_url();?>authentification/utilisateur/check_login" method="post">
+	<form class="login-form" action="<?php echo site_url('check_login');?>" method="post">
 		<div class="login-wrap">
-			<?php if (isset($success)){
+			<?php
+                        if (isset($success)){
 				if($success)
 					echo "<h3 class=\"btn-success\"><i>Votre inscription est en cours de traitement, Vous pourriez vous connecter quand votre incription aura été validée par l'Administrateur.</i></h3>";
 			}
@@ -67,7 +68,7 @@
 				<span class="pull-right"> <a href="#"> Forgot Password?</a></span>
 			</label>
 			<button class="btn btn-primary btn-lg btn-block" type="submit">Connexion</button>
-			<button class="btn btn-info btn-lg btn-block" type="button" ><a href="<?php echo base_url();?>authentification/utilisateur/inscription">Inscription</a></button>
+			<button class="btn btn-info btn-lg btn-block" type="button" ><a href="<?php echo site_url('inscription');?>">Inscription</a></button>
 		</div>
 	</form>
 	<div class="text-right">

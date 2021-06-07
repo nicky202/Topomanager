@@ -14,13 +14,17 @@ class Utilisateur_model extends CI_Model {
 		$data['login'] = trim(xss_clean($this->input->post('login')));
 		$data['mdp'] = trim(xss_clean($this->input->post('mdp')));
 		$data['mdp_confirm'] = trim(xss_clean($this->input->post('mdp_confirm')));
+                
 		$data['groupe_id'] = trim(xss_clean($this->input->post('groupe_select')));
+                //repetition mdp à vérifier par js
+                $salt = 'Suivi_T0p0*';
+                $data['crypted_mdp'] = crypt($data['mdp'], $salt);
 
 		$data = array('nom' => $data['nom'],
 			'prenom' => $data['prenom'],
 			'e_mail' => $data['email'],
 			'login' => $data['login'],
-			'mdp' => $data['mdp'] ,
+			'mdp' => $data['crypted_mdp'] ,
 			'valide' => 0,
 			'id_type_utilisateur' => $data['groupe_id']);
 		$this->db->insert('utilisateur', $data);
@@ -45,11 +49,14 @@ class Utilisateur_model extends CI_Model {
 
 	public function get_elt_for_login()
 	{
-		$login = trim($this->input->post('login'));
-		$password = trim($this->input->post('password'));
+		$login = xss_clean(trim($this->input->post('login')));
+		$password = xss_clean(trim($this->input->post('password')));
+                $salt = 'Suivi_T0p0*';
+                $cypted_password = crypt($password, $salt);
+                //var_dump($cypted_password);
 		$sql = "SELECT u.login, u.mdp, u.valide, t.libelle_type_utilisateur FROM
 		 utilisateur u INNER JOIN type_utilisateur t ON u.id_type_utilisateur = t.idtype_utilisateur WHERE u.login = ? AND u.mdp = ?";
-		$query = $this->db->query($sql, array($login,$password));
+		$query = $this->db->query($sql, array($login,$cypted_password));
 		return $query->result();
 	}
 
