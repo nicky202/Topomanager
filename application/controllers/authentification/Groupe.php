@@ -16,7 +16,7 @@ class Groupe extends CI_Controller {
 		$data['success'] = $query;
 
 		if($query){
-			redirect('/authentification/Groupe/list_group', 'refresh');
+			redirect('list_group', 'refresh');
 			//$this->load->view('authentification/edit_groupe', $data);
 		}else{
 			$this->load->view('templates/header');
@@ -56,7 +56,7 @@ class Groupe extends CI_Controller {
 
 		$this->groupemodel->delete_one($id);
 
-		redirect('/authentification/Groupe/list_group', 'refresh');
+		redirect('list_group', 'refresh');
 	}
 
 	public function update_group()
@@ -65,7 +65,7 @@ class Groupe extends CI_Controller {
 		$data['success'] = $query;
 
 		if($query){
-			redirect('/authentification/Groupe/list_group', 'refresh');
+			redirect('list_group', 'refresh');
 			//$this->load->view('authentification/edit_groupe', $data);
 		}else{
 			$this->load->view('templates/header');

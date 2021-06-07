@@ -33,7 +33,7 @@
 							</div>
 
 							<button type="submit" class="btn btn-primary">Rechercher</button>
-							<button type="button" class="btn btn-success"><a href="<?php echo base_url();?>authentification/groupe/new_group"><i>Nouveau</i></a></button>
+							<button type="button" class="btn btn-success"><a href="<?php echo site_url('new_group');?>"><i>Nouveau</i></a></button>
 						</form>
 
 					</div>
@@ -60,9 +60,8 @@
 								<td><?php echo $row->libelle_type_utilisateur; ?></td>
 								<td>
 									<div class="btn-group">
-										<!--<a class="btn btn-primary" href="<?php echo base_url();?>authentification/groupe/new_group"><i class="icon_plus_alt2"></i></a>-->
-										<a class="btn btn-success" href="<?php echo base_url();?>authentification/groupe/edit_group/<?php echo $row->idtype_utilisateur; ?>"><i class="icon_pencil"></i></a>
-										<a class="btn btn-danger" href="<?php echo base_url();?>authentification/groupe/delete_group/<?php echo $row->idtype_utilisateur; ?>"><i class="icon_close_alt2"></i></a>
+                                                                                <a class="btn btn-success" href="<?php echo site_url('edit_group/'.$row->idtype_utilisateur);?>"><i class="icon_pencil"></i></a>
+										<a class="btn btn-danger" href="<?php echo site_url('delete_group/'.$row->idtype_utilisateur);?>"><i class="icon_close_alt2"></i></a>
 									</div>
 								</td>
 							</tr>
