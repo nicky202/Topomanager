@@ -29,7 +29,7 @@
 									</div>
 								</div>
 								<div class="form-group ">
-									<label for="prenom" class="control-label col-lg-2">Prenom </label>
+									<label for="prenom" class="control-label col-lg-2">Prenoms </label>
 									<div class="col-lg-10">
 										<input class="form-control" id="prenom" name="prenom" minlength="5" type="text" />
 									</div>
@@ -40,7 +40,20 @@
 										<input class="form-control " id="email" type="email" name="email" />
 									</div>
 								</div>
-								<div class="form-group ">
+								
+                                                                <div class="form-group ">
+									<label for="cin" class="control-label col-lg-2">CIN <span class="required">*</span></label>
+									<div class="col-lg-10">
+										<input class="form-control" id="cin" name="cin" minlength="5" type="text" required/>
+									</div>
+								</div>
+                                                                <div class="form-group ">
+									<label for="tel" class="control-label col-lg-2">Téléphone <span class="required">*</span></label>
+									<div class="col-lg-10">
+										<input class="form-control" id="tel" name="tel" minlength="5" type="text" required/>
+									</div>
+								</div>
+                                                                <div class="form-group ">
 									<label for="login" class="control-label col-lg-2">Login <span class="required">*</span></label>
 									<div class="col-lg-10">
 										<input class="form-control" id="login" name="login" minlength="5" type="text" required/>
@@ -58,6 +71,7 @@
 										<input class="form-control" id="mdp_confirm" name="mdp_confirm" minlength="5" type="password" required/>
 									</div>
 								</div>
+                                                                
 								<?php if (isset($result)){ ?>
 									<div class="form-group ">
 										<label for="groupe" class="control-label col-lg-2">Type utilisateur souhaité <span class="required">*</span></label>
@@ -75,7 +89,7 @@
 								<div class="form-group">
 									<div class="col-lg-offset-2 col-lg-10">
 										<button class="btn btn-primary" type="submit">S'inscrire</button>
-										<button class="btn btn-default" type="button">Annuler</button>
+                                                                                <a  href="<?php echo site_url('login'); ?>"><button class="btn btn-default" type="button">Annuler</button></a>
 									</div>
 								</div>
 							<?php echo form_close(); ?>

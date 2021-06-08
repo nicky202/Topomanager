@@ -1299,6 +1299,7 @@ th {
   line-height: 1.428571429;
   vertical-align: top;
   border-top: 1px solid #dddddd;
+  font-weight: 600;
 }
 .table thead > tr > th {
   vertical-align: bottom;
@@ -1564,6 +1565,7 @@ input[type="number"]::-webkit-inner-spin-button {
   background-color: #ffffff;
   border: 1px solid #c7c7cc;
   border-radius: 4px;  
+  font-weight: 600;
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
@@ -1763,6 +1765,7 @@ textarea.input-lg {
   margin-top: 0;
   margin-bottom: 0;
   padding-top: 7px;
+  font-weight: bold;
 }
 .form-horizontal .form-group {
   margin-left: -15px;

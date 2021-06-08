@@ -16,8 +16,10 @@ class Utilisateur extends CI_Controller {
         }
 
 	public function login(){
-
+            if(!$this->session->has_userdata('login'))
 		$this->load->view('authentification/login');
+            else
+                redirect('dashboard');
 	}
 
 	public function inscription(){
@@ -78,7 +80,7 @@ class Utilisateur extends CI_Controller {
 					$this->load->view('authentification/login', $data);
 				}else{
 					$this->session->set_userdata('login', $row->login);
-					$this->session->set_userdata('groupe', $row->libelle_type_utilisateur);
+					$this->session->set_userdata('groupe', $row->labeltype);
 					redirect('dashboard', 'refresh');
 				}
 			}

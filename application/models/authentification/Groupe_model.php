@@ -27,13 +27,13 @@ class Groupe_model extends CI_Model {
 			return $this->db->select(array('idtypeuser','labeltype'))
 							->from('typeutilisateur')
 							->where('labeltype', $libelle_type_utilisateur)
-							->order_by('idtypeuser', 'desc')
+							->order_by('idtypeuser', 'asc')
 							->get()
 							->result();
 		}else{
 			return $this->db->select(array('idtypeuser','labeltype'))
 				->from('typeutilisateur')
-				->order_by('idtypeuser', 'desc')
+				->order_by('idtypeuser', 'asc')
 				->get()
 				->result();
 		}

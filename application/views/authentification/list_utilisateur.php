@@ -53,9 +53,11 @@
 						<tr>
 							<th><i class="icon_profile"></i> Nom</th>
 							<th><i class="icon_profile"></i> Prenom</th>
+                                                        <th><i class="icon_group"></i> CIN</th>
 							<th><i class="icon_mail_alt"></i> e-mail</th>
+                                                        <th><i class="icon_group"></i> Tel</th>
 							<th><i class="icon_group"></i> Groupe</th>
-							<th><i class="icon_pencil"></i> Etat Inscription</th>
+                                                        <th><i class="icon_pencil"></i> Etat Inscription</th>
 							<th><i class="icon_cogs"></i> Action</th>
 						</tr>
 						<?php //var_dump($res);
@@ -63,7 +65,9 @@
 							<tr>
 								<td><?php echo $row->nom; ?></td>
 								<td><?php echo $row->prenoms; ?></td>
+                                                                <td><?php echo $row->cin; ?></td>
 								<td><?php echo $row->mail; ?></td>
+                                                                <td><?php echo $row->tel; ?></td>
 								<td><?php echo $row->labeltype; ?></td>
 								<td><?php if(!$row->valide){ ?>
 										<i class="btn btn-danger">Non Validée</i>
