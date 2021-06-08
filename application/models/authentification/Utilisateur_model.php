@@ -21,10 +21,10 @@ class Utilisateur_model extends CI_Model {
                 $data['crypted_mdp'] = crypt($data['mdp'], $salt);
 
 		$data = array('nom' => $data['nom'],
-			'prenom' => $data['prenom'],
-			'e_mail' => $data['email'],
+			'prenoms' => $data['prenom'],
+			'mail' => $data['email'],
 			'login' => $data['login'],
-			'mdp' => $data['crypted_mdp'] ,
+			'password' => $data['crypted_mdp'] ,
 			'valide' => 0,
 			'id_type_utilisateur' => $data['groupe_id']);
 		$this->db->insert('utilisateur', $data);
@@ -33,15 +33,15 @@ class Utilisateur_model extends CI_Model {
 
 	public function list_utilisateur()
 	{
-		$sql = "SELECT u.id_utilisateur, u.nom, u.prenom, u.e_mail, u.login, u.valide, t.libelle_type_utilisateur FROM
-		 utilisateur u INNER JOIN type_utilisateur t ON u.id_type_utilisateur = t.idtype_utilisateur";
+		$sql = "SELECT u.idutilisateur, u.nom, u.prenoms, u.mail, u.login, u.valide, t.labeltype FROM
+		 utilisateur u INNER JOIN typeutilisateur t ON u.id_type_utilisateur = t.idtypeuser";
 		$query =  $this->db->query($sql);
 		return $query->result();
 	}
 
 	public function validate_sign_up($state=0, $id=null){
 		if (isset($id)){
-			$sql = "UPDATE utilisateur SET valide = ? WHERE id_utilisateur = ?";
+			$sql = "UPDATE utilisateur SET valide = ? WHERE idutilisateur = ?";
 			$this->db->query($sql, array($state, $id));
 			return ($this->db->affected_rows() != 1) ? false : true;
 		}
@@ -54,8 +54,8 @@ class Utilisateur_model extends CI_Model {
                 $salt = 'Suivi_T0p0*';
                 $cypted_password = crypt($password, $salt);
                 //var_dump($cypted_password);
-		$sql = "SELECT u.login, u.mdp, u.valide, t.libelle_type_utilisateur FROM
-		 utilisateur u INNER JOIN type_utilisateur t ON u.id_type_utilisateur = t.idtype_utilisateur WHERE u.login = ? AND u.mdp = ?";
+		$sql = "SELECT u.login, u.password, u.valide, t.labeltype FROM
+		 utilisateur u INNER JOIN typeutilisateur t ON u.id_type_utilisateur = t.idtypeuser WHERE u.login = ? AND u.password = ?";
 		$query = $this->db->query($sql, array($login,$cypted_password));
 		return $query->result();
 	}

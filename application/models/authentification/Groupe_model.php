@@ -9,8 +9,8 @@ class Groupe_model extends CI_Model {
 	public function insert_group(){
 		$libelle_type_utilisateur = trim(xss_clean($this->input->post('groupe')));
 		if (!empty($libelle_type_utilisateur)){
-			$data = array('libelle_type_utilisateur' => $libelle_type_utilisateur);
-			$this->db->insert('type_utilisateur', $data);
+			$data = array('labeltype' => $libelle_type_utilisateur);
+			$this->db->insert('typeutilisateur', $data);
 			return ($this->db->affected_rows() != 1) ? false : true;
 		}
 		else{
@@ -24,16 +24,16 @@ class Groupe_model extends CI_Model {
 		$libelle_type_utilisateur = trim(xss_clean($this->input->post('groupe')));
 
 		if(!empty($libelle_type_utilisateur)){
-			return $this->db->select(array('idtype_utilisateur','libelle_type_utilisateur'))
-							->from('type_utilisateur')
-							->where('libelle_type_utilisateur', $libelle_type_utilisateur)
-							->order_by('idtype_utilisateur', 'desc')
+			return $this->db->select(array('idtypeuser','labeltype'))
+							->from('typeutilisateur')
+							->where('labeltype', $libelle_type_utilisateur)
+							->order_by('idtypeuser', 'desc')
 							->get()
 							->result();
 		}else{
-			return $this->db->select(array('idtype_utilisateur','libelle_type_utilisateur'))
-				->from('type_utilisateur')
-				->order_by('idtype_utilisateur', 'desc')
+			return $this->db->select(array('idtypeuser','labeltype'))
+				->from('typeutilisateur')
+				->order_by('idtypeuser', 'desc')
 				->get()
 				->result();
 		}
@@ -48,7 +48,7 @@ class Groupe_model extends CI_Model {
 
 
 		if(!empty($libelle_type_utilisateur)){
-			$sql = "UPDATE type_utilisateur SET libelle_type_utilisateur = ? WHERE idtype_utilisateur = ?";
+			$sql = "UPDATE typeutilisateur SET labeltype = ? WHERE idtypeuser = ?";
 			$this->db->query($sql, array($libelle_type_utilisateur, $id));
 			/*$this->db->set('libelle_type_utilisateur', $libelle_type_utilisateur)
 				->where('idtype_utilisateur', $id)
@@ -62,9 +62,9 @@ class Groupe_model extends CI_Model {
 
 	public function get_group_by_id($id){
 		if(!empty($id)){
-			return $this->db->select(array('idtype_utilisateur','libelle_type_utilisateur'))
-				->from('type_utilisateur')
-				->where('idtype_utilisateur', $id)
+			return $this->db->select(array('idtypeuser','labeltype'))
+				->from('typeutilisateur')
+				->where('idtypeuser', $id)
 				->get()
 				->result();
 		}
@@ -72,7 +72,7 @@ class Groupe_model extends CI_Model {
 
 	public function delete_one($id){
 		if(!empty($id)){
-			$sql = "DELETE FROM type_utilisateur WHERE idtype_utilisateur = ?";
+			$sql = "DELETE FROM typeutilisateur WHERE idtypeuser = ?";
 			$this->db->query($sql,array($id));
 		}
 	}

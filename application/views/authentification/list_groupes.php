@@ -57,11 +57,11 @@
 						</tr>
 						<?php foreach ($result as $row) { ?>
 							<tr>
-								<td><?php echo $row->libelle_type_utilisateur; ?></td>
+								<td><?php echo $row->labeltype; ?></td>
 								<td>
 									<div class="btn-group">
-                                                                                <a class="btn btn-success" href="<?php echo site_url('edit_group/'.$row->idtype_utilisateur);?>"><i class="icon_pencil"></i></a>
-										<a class="btn btn-danger" href="<?php echo site_url('delete_group/'.$row->idtype_utilisateur);?>"><i class="icon_close_alt2"></i></a>
+                                                                                <a class="btn btn-success" href="<?php echo site_url('edit_group/'.$row->idtypeuser);?>"><i class="icon_pencil"></i></a>
+										<a class="btn btn-danger" href="<?php echo site_url('delete_group/'.$row->idtypeuser);?>"><i class="icon_close_alt2"></i></a>
 									</div>
 								</td>
 							</tr>

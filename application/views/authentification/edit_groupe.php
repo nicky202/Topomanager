@@ -53,8 +53,8 @@ if (! $success){
 				  <?php if (isset($result)){
 				  echo form_open('update_group', "role=form");
 					  foreach ($result as $row) {
-						  $libelle = $row->libelle_type_utilisateur;
-						  $id = $row->idtype_utilisateur;
+						  $libelle = $row->labeltype;
+						  $id = $row->idtypeuser;
 					  }
 					  ?>
 				  <!--<form role="form">-->

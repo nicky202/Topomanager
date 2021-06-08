@@ -64,7 +64,7 @@
 										<div class="col-lg-10">
 											<select class="form-control" id="groupe" name="groupe_select" >
 												<?php foreach($result as $row) { ?>
-													<option value=<?php echo $row->idtype_utilisateur; ?>><?php echo $row->libelle_type_utilisateur; ?></option>
+													<option value=<?php echo $row->idtypeuser; ?>><?php echo $row->labeltype; ?></option>
 												<?php }?>
 
 											</select>
