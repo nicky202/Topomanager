@@ -13,6 +13,7 @@ class Circonscription extends CI_Controller {
 	}
 
 	public function new_circonscription(){
+            if($this->session->has_userdata('login')){
 		$services = $this->service_model->list_service();
 		$query = $this->circonscription_model->insert_circonscription();
 		$data['success'] = $query;
@@ -27,9 +28,13 @@ class Circonscription extends CI_Controller {
 			$this->load->view('entites/edit_circonscription', $data);
 			$this->load->view('templates/scripts');
 		}
+            }else{
+                redirect('login');
+            } 
 	}
 
 	public function list_circonscription($nom_service=null){
+            if($this->session->has_userdata('login')){
 		$result = $this->circonscription_model->list_circonscription();
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');
@@ -41,9 +46,13 @@ class Circonscription extends CI_Controller {
 			$this->load->view('entites/list_circonscription');
 		}
 		$this->load->view('templates/scripts');
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function edit_circonscription($id=null){
+            if($this->session->has_userdata('login')){
 		$services = $this->service_model->list_service();
 		$result = $this->circonscription_model->get_circonscription_by_id($id);
 		$data['result'] = $result;
@@ -57,17 +66,23 @@ class Circonscription extends CI_Controller {
 			$this->load->view('templates/scripts');
 
 		}
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function delete_circonscription($id=null){
-
+            if($this->session->has_userdata('login')){
 		$this->circonscription_model->delete_one($id);
-
 		redirect('/entites/circonscription/list_circonscription', 'refresh');
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function update_circonscription()
 	{
+            if($this->session->has_userdata('login')){
 		$query = $this->circonscription_model->update_circonscription();
 		$data['success'] = $query;
 
@@ -80,6 +95,9 @@ class Circonscription extends CI_Controller {
 			$this->load->view('entites/edit_circonscription', $data);
 			$this->load->view('templates/scripts');
 		}
+            }else{
+                redirect('login');
+            }
 	}
 }
 

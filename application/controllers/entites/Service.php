@@ -12,6 +12,7 @@ class Service extends CI_Controller {
 	}
 
 	public function new_service(){
+            if($this->session->has_userdata('login')){
 		$directions = $this->direction_model->list_direction();
 		$query = $this->service_model->insert_service();
 		$data['success'] = $query;
@@ -26,9 +27,13 @@ class Service extends CI_Controller {
 			$this->load->view('entites/edit_service', $data);
 			$this->load->view('templates/scripts');
 		}
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function list_service($nom_service=null){
+            if($this->session->has_userdata('login')){
 		$result = $this->service_model->list_service();
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');
@@ -40,9 +45,13 @@ class Service extends CI_Controller {
 			$this->load->view('entites/list_service');
 		}
 		$this->load->view('templates/scripts');
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function edit_service($id=null){
+            if($this->session->has_userdata('login')){
 		$directions = $this->direction_model->list_direction();
 		$result = $this->service_model->get_service_by_id($id);
 		$data['result'] = $result;
@@ -56,17 +65,24 @@ class Service extends CI_Controller {
 			$this->load->view('templates/scripts');
 
 		}
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function delete_service($id=null){
-
+            if($this->session->has_userdata('login')){
 		$this->service_model->delete_one($id);
 
 		redirect('/entites/service/list_service', 'refresh');
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function update_service()
 	{
+            if($this->session->has_userdata('login')){
 		$query = $this->service_model->update_service();
 		$data['success'] = $query;
 
@@ -79,6 +95,9 @@ class Service extends CI_Controller {
 			$this->load->view('entites/edit_service', $data);
 			$this->load->view('templates/scripts');
 		}
+            }else{
+                redirect('login');
+            }
 	}
 }
 

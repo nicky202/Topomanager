@@ -11,7 +11,7 @@ class Direction extends CI_Controller {
 	}
 
 	public function new_direction(){
-
+            if($this->session->has_userdata('login')){
 		$query = $this->direction_model->insert_direction();
 		$data['success'] = $query;
 
@@ -24,9 +24,13 @@ class Direction extends CI_Controller {
 			$this->load->view('entites/edit_direction', $data);
 			$this->load->view('templates/scripts');
 		}
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function list_direction($nom_direction=null){
+            if($this->session->has_userdata('login')){
 		$result = $this->direction_model->list_direction();
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');
@@ -38,10 +42,13 @@ class Direction extends CI_Controller {
 			$this->load->view('entites/list_direction');
 		}
 		$this->load->view('templates/scripts');
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function edit_direction($id=null){
-
+            if($this->session->has_userdata('login')){
 		$result = $this->direction_model->get_direction_by_id($id);
 		$data['result'] = $result;
 
@@ -53,17 +60,24 @@ class Direction extends CI_Controller {
 			$this->load->view('templates/scripts');
 
 		}
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function delete_direction($id=null){
-
+            if($this->session->has_userdata('login')){
 		$this->direction_model->delete_one($id);
 
 		redirect('/entites/direction/list_direction', 'refresh');
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function update_direction()
 	{
+            if($this->session->has_userdata('login')){
 		$query = $this->direction_model->update_direction();
 		$data['success'] = $query;
 
@@ -76,5 +90,8 @@ class Direction extends CI_Controller {
 			$this->load->view('entites/edit_direction', $data);
 			$this->load->view('templates/scripts');
 		}
+            }else{
+                redirect('login');
+            }
 	}
 }

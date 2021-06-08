@@ -13,6 +13,7 @@ class Division extends CI_Controller {
 	}
 
 	public function new_division(){
+            if($this->session->has_userdata('login')){
 		$services = $this->service_model->list_service();
 		$directions = $this->direction_model->list_direction();
 		$query = $this->division_model->insert_division();
@@ -29,9 +30,13 @@ class Division extends CI_Controller {
 			$this->load->view('entites/edit_division', $data);
 			$this->load->view('templates/scripts');
 		}
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function list_division($nom_division=null){
+            if($this->session->has_userdata('login')){
 		$result = $this->division_model->list_division();
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');
@@ -43,9 +48,13 @@ class Division extends CI_Controller {
 			$this->load->view('entites/list_division');
 		}
 		$this->load->view('templates/scripts');
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function edit_division($id=null){
+            if($this->session->has_userdata('login')){
 		$services = $this->service_model->list_service();
 		$directions = $this->direction_model->list_direction();
 		$result = $this->division_model->get_division_by_id($id);
@@ -61,17 +70,23 @@ class Division extends CI_Controller {
 			$this->load->view('templates/scripts');
 
 		}
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function delete_division($id=null){
-
+            if($this->session->has_userdata('login')){
 		$this->division_model->delete_one($id);
-
 		redirect('/entites/division/list_division', 'refresh');
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function update_division()
 	{
+            if($this->session->has_userdata('login')){
 		$query = $this->division_model->update_division();
 		$data['success'] = $query;
 
@@ -84,7 +99,10 @@ class Division extends CI_Controller {
 			$this->load->view('entites/edit_division', $data);
 			$this->load->view('templates/scripts');
 		}
-	}
+            }else{
+                redirect('login');
+            }
+        }
 }
 
 
