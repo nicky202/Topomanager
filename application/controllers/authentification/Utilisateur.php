@@ -40,6 +40,7 @@ class Utilisateur extends CI_Controller {
 	}
 
 	public function list_utilisateur(){
+            if($this->session->has_userdata('login')){
 		$res = $this->usermodel->list_utilisateur();
 		$data = array();
 		$data['res'] = $res;
@@ -47,13 +48,20 @@ class Utilisateur extends CI_Controller {
 		$this->load->view('templates/sidebar');
 		$this->load->view('authentification/list_utilisateur', $data);
 		$this->load->view('templates/scripts');
+            }else{
+                redirect('login');
+            }
 
 	}
 
 	//Valider ou devalider une incription
 	public function change_state_signup($state=0, $id = null){
+            if($this->session->has_userdata('login')){
 		$query = $this->usermodel->validate_sign_up($state, $id);
 		redirect('list_user', 'refresh');
+            }else{
+                redirect('login');
+            }
 	}
 
 	public function check_login(){
@@ -80,7 +88,11 @@ class Utilisateur extends CI_Controller {
 
 	public function deconnexion()
 	{
+            if($this->session->has_userdata('login')){
 		$this->session->sess_destroy();
 		redirect('login', 'refresh');
+            }else{
+                redirect('login');
+            }
 	}
 }
