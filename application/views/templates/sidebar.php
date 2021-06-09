@@ -9,6 +9,17 @@
 					<span>Tableau de bord</span>
 				</a>
 			</li>
+                        <li class="sub-menu">
+				<a href="javascript:;" class="">
+					<i class="icon_documents_alt"></i>
+					<span>Dossiers</span>
+					<span class="menu-arrow arrow_carrot-right"></span>
+				</a>
+				<ul class="sub">
+					<li><a class="" href="<?php echo site_url('list_user');?>">Dossiers</a></li>
+					<li><a class="" href="<?php echo site_url('list_group');?>">Demandeurs</a></li>
+				</ul>
+			</li>
 			<li class="sub-menu">
 				<a href="javascript:;" class="">
 					<i class="icon_group"></i>
@@ -27,36 +38,22 @@
 					<span class="menu-arrow arrow_carrot-right"></span>
 				</a>
 				<ul class="sub">
-					<li><a class="" href="<?php echo base_url();?>entites/direction/list_direction">Direction</a></li>
-					<li><a class="" href="<?php echo base_url();?>entites/service/list_service">Service</a></li>
+					<!--<li><a class="" href="<?php echo base_url();?>entites/direction/list_direction">Direction</a></li>-->
+					<li><a class="" href="<?php echo base_url();?>entites/service/list_service">Service Regional</a></li>
 					<li><a class="" href="<?php echo base_url();?>entites/circonscription/list_circonscription">Circonscription</a></li>
-					<li><a class="" href="<?php echo base_url();?>entites/division/list_division">Division</a></li>
+					<!--<li><a class="" href="<?php echo base_url();?>entites/division/list_division">Division</a></li>-->
 				</ul>
 			</li>
-			<li class="sub-menu">
+			
+		        <li class="sub-menu">
 				<a href="javascript:;" class="">
 					<i class="icon_toolbox_alt"></i>
-					<span>Matériels</span>
+					<span>Traitements</span>
 					<span class="menu-arrow arrow_carrot-right"></span>
 				</a>
 				<ul class="sub">
-					<li><a class="" href="<?php echo base_url();?>materiel/categorie/list_categorie">Catégorie Matériel</a></li>
-					<li><a class="" href="<?php echo base_url();?>materiel/materiel/list_materiel">Liste matériels</a></li>
-					<li><a class="" href="<?php echo base_url();?>materiel/entree/list_entree">Entrée</a></li>
-					<li><a class="" href="<?php echo base_url();?>materiel/sortie/list_sortie">Sortie</a></li>
-				</ul>
-			</li>
-			<li class="sub-menu">
-				<a href="javascript:;" class="">
-					<i class="icon_id_alt"></i>
-					<span>Personnel</span>
-					<span class="menu-arrow arrow_carrot-right"></span>
-				</a>
-				<ul class="sub">
-                                        <li><a class="" href="<?php echo base_url();?>personnel/typepersonnel/list_type_personnel">Types Personnel</a></li>
-					<li><a class="" href="general.html">Personnels</a></li>
-					<li><a class="" href="buttons.html">Avancements</a></li>
-					<li><a class="" href="grids.html">Affectations</a></li>
+					<li><a class="" href="<?php echo base_url();?>materiel/categorie/list_categorie">Types de traitement</a></li>
+					<li><a class="" href="<?php echo base_url();?>materiel/materiel/list_materiel">Procedures</a></li>
 				</ul>
 			</li>
 			<!--<li>
