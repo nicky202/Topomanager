@@ -1,10 +1,16 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/css/inscription.css");?>">
+<link href="<?php echo base_url()?>/assets/css/inscription.css" rel="stylesheet">
 <body class="login-img3-body">
 	<section class="wrapper">
 		<section class="panel">
 			<header class="panel-heading">
 				Inscription
 			</header>
+			<h3 class='alert-danger'>
+			<?php
+				if (isset($info))
+					echo "<i>".$info."</i>";
+			?>
+			</h3>
 			<div class="panel-body">
 				<div class="form">
 					<?php
@@ -51,13 +57,13 @@
 					<div class="form-group ">
 						<label for="mdp" class="control-label col-lg-2">Mot de passe <span class="required">*</span></label>
 						<div class="col-lg-10">
-							<input class="form-control" id="mdp" name="password" minlength="5" type="password" required/>
+							<input class="form-control password" id="mdp" name="password" minlength="5" type="password" required/>
 						</div>
 					</div>
 					<div class="form-group ">
 						<label for="mdp_confirm" class="control-label col-lg-2">Confirmer mot de passe <span class="required">*</span></label>
 						<div class="col-lg-10">
-							<input class="form-control" id="mdp_confirm" name="password_confirm" minlength="5" type="password" required/>
+							<input class="form-control password_confirm" id="mdp_confirm" name="password_confirm" minlength="5" type="password" required/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -81,7 +87,7 @@
 
 					<div class="form-group">
 						<div class="col-lg-offset-2 col-lg-10">
-							<button class="btn btn-primary" type="submit" onclick="return Valider()">S'inscrire</button>
+							<button class="btn btn-primary" type="submit" onclick="Valider()">S'inscrire</button>
 							<a  href="<?php echo site_url('login'); ?>"><button class="btn btn-default" type="button">Annuler</button></a>
 						</div>
 					</div>
@@ -92,8 +98,8 @@
 	</section>
 </body>
 <script>
-	var password = document.querySelector("password").value;
-	var confirm_password = document.querySelector("password_confirm").value;
+	var password = document.querySelector(".password").value;
+	var confirm_password = document.querySelector(".password_confirm").value;
 
 	function Valider(){
 		if(password != confirm_password){

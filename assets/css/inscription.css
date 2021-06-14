@@ -1,22 +1,22 @@
 
 .wrapper{
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: transparent !important;
 }
 .panel{
-    width: 75%;
-    margin: 0;
+    width: 70% !important;
+    margin: 0 !important;
 }
 .form-group{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 .form-control{
-    width: 80%;
+    width: 80% !important;
 }

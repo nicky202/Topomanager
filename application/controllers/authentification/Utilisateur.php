@@ -35,13 +35,18 @@ class Utilisateur extends CI_Controller {
 
 	public function commit_inscription(){
 		$query = $this->usermodel->commit_inscription();
+		$this->load->view('templates/header_inscription');
 		$data = array();
 		$data['success'] = $query;
-		if($query)
+		if($query){
 			$this->load->view('authentification/login', $data);
-		// else{
-		// 	redirect('inscription');
-		// }
+		}
+		else{
+			$data["info"] = "Mot de Passe non Valide.";
+			$this->load->view('authentification/inscription', $data);
+			$this->load->view('templates/footer_inscription');
+		}
+			
 	}
 
 	public function list_utilisateur(){
@@ -49,7 +54,7 @@ class Utilisateur extends CI_Controller {
 		$res = $this->usermodel->list_utilisateur();
 		$data = array();
 		$data['res'] = $res;
-		$this->load->view('templates/header');
+		
 		$this->load->view('templates/sidebar');
 		$this->load->view('authentification/list_utilisateur', $data);
 		$this->load->view('templates/scripts');
@@ -83,9 +88,12 @@ class Utilisateur extends CI_Controller {
 					$this->load->view('authentification/login', $data);
 				}else{
 					$this->session->set_userdata('login', $row->login);
+					$this->session->set_userdata('prenoms', $row->prenoms);
 					$this->session->set_userdata('nom', $row->nom);
 					$this->session->set_userdata('photo', $row->photo);
 					$this->session->set_userdata('mail', $row->mail);
+					$this->session->set_userdata('tel', $row->tel);
+					$this->session->set_userdata('cin', $row->cin);
 					$this->session->set_userdata('groupe', $row->labeltype);
 					redirect('dashboard', 'refresh');
 				}

@@ -20,7 +20,7 @@ class Utilisateur_model extends CI_Model {
 		$data['id_type_utilisateur'] = trim(xss_clean($this->input->post('groupe_select')));
                 //repetition mdp à vérifier par js
                 $salt = 'Suivi_T0p0*';
-                $data['password'] = crypt($data['password'], $salt);
+                $data['crypt'] = crypt($data['password'], $salt);
 
 		
 		
@@ -37,24 +37,24 @@ class Utilisateur_model extends CI_Model {
 
 			echo $this->upload->display_errors();
 		}
-		else{ //if($data['password'] == $password_confirm){
-			$profil= $this->upload->data();
-			$data['photo']=$profil['file_name'];
-
-			$data = array('nom' => $data['nom'],
-			'prenoms' => $data['prenoms'],
-			'mail' => $data['mail'],
-			'login' => $data['login'],
-			'password' => $data['password'] ,
-			'valide' => 0,
-			'id_type_utilisateur' => $data['id_type_utilisateur'],
-            'cin' => $data['cin'],
-            'tel' => $data['tel'],
-			'photo' => $data['photo']		
-		);
-		$this->db->insert('utilisateur', $data);
-		return ($this->db->affected_rows() != 1) ? false : true;
-
+		else{ 
+			if($data['password'] == $password_confirm){
+				$profil= $this->upload->data();
+				$data['photo']=$profil['file_name'];
+				$data = array('nom' => $data['nom'],
+				'prenoms' => $data['prenoms'],
+				'mail' => $data['mail'],
+				'login' => $data['login'],
+				'password' => $data['crypt'] ,
+				'valide' => 0,
+				'id_type_utilisateur' => $data['id_type_utilisateur'],
+				'cin' => $data['cin'],
+				'tel' => $data['tel'],
+				'photo' => $data['photo']		
+			);
+			$this->db->insert('utilisateur', $data);
+			return ($this->db->affected_rows() != 1) ? false : true;
+			}
 		}
 		
 	}
@@ -82,7 +82,7 @@ class Utilisateur_model extends CI_Model {
                 $salt = 'Suivi_T0p0*';
                 $cypted_password = crypt($password, $salt);
                 //var_dump($cypted_password);
-		$sql = "SELECT u.* , t.labeltype FROM
+		$sql = "SELECT u.idutilisateur, u.nom, u.prenoms, u.mail, u.login, u.valide, u.cin, u.tel, u.photo, t.labeltype FROM
 		 utilisateur u INNER JOIN typeutilisateur t ON u.id_type_utilisateur = t.idtypeuser WHERE u.login = ? AND u.password = ?";
 		$query = $this->db->query($sql, array($login,$cypted_password));
 		return $query->result();
