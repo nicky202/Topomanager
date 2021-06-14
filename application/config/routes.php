@@ -70,3 +70,4 @@ $route['dashboard'] = 'dashboard/dashboard/view_dashboard';
 // fin routes tableau de bord
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['profile'] = 'authentification/utilisateur/profil';

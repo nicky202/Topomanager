@@ -9,30 +9,54 @@ class Utilisateur_model extends CI_Model {
 	public function commit_inscription(){
 		$data = array();
 		$data['nom'] = trim(xss_clean($this->input->post('nom')));
-		$data['prenom'] = trim(xss_clean($this->input->post('prenom')));
-		$data['email'] = trim(xss_clean($this->input->post('email')));
+		$data['prenoms'] = trim(xss_clean($this->input->post('prenoms')));
+		$data['mail'] = trim(xss_clean($this->input->post('mail')));
 		$data['login'] = trim(xss_clean($this->input->post('login')));
                 $data['cin'] = xss_clean(trim($this->input->post('cin')));
                 $data['tel'] = xss_clean(trim($this->input->post('tel')));
-		$data['mdp'] = trim(xss_clean($this->input->post('mdp')));
-		$data['mdp_confirm'] = trim(xss_clean($this->input->post('mdp_confirm')));
+		$data['password'] = trim(xss_clean($this->input->post('password')));
+		$password_confirm = trim(xss_clean($this->input->post('password_confirm')));
                 
-		$data['groupe_id'] = trim(xss_clean($this->input->post('groupe_select')));
+		$data['id_type_utilisateur'] = trim(xss_clean($this->input->post('groupe_select')));
                 //repetition mdp à vérifier par js
                 $salt = 'Suivi_T0p0*';
-                $data['crypted_mdp'] = crypt($data['mdp'], $salt);
+                $data['password'] = crypt($data['password'], $salt);
 
-		$data = array('nom' => $data['nom'],
-			'prenoms' => $data['prenom'],
-			'mail' => $data['email'],
+		
+		
+		$uploadimg = array(
+
+			'upload_path' => './profile_img',
+			'allowed_types' => 'jpg|png|jpeg',
+			'max_size' => 4000
+		);
+
+		$this->load->library("upload",$uploadimg);
+
+		if(!$this->upload->do_upload('photo')){
+
+			echo $this->upload->display_errors();
+		}
+		else{ //if($data['password'] == $password_confirm){
+			$profil= $this->upload->data();
+			$data['photo']=$profil['file_name'];
+
+			$data = array('nom' => $data['nom'],
+			'prenoms' => $data['prenoms'],
+			'mail' => $data['mail'],
 			'login' => $data['login'],
-			'password' => $data['crypted_mdp'] ,
+			'password' => $data['password'] ,
 			'valide' => 0,
-			'id_type_utilisateur' => $data['groupe_id'],
-                        'cin' => $data['cin'],
-                        'tel' => $data['tel']);
+			'id_type_utilisateur' => $data['id_type_utilisateur'],
+            'cin' => $data['cin'],
+            'tel' => $data['tel'],
+			'photo' => $data['photo']		
+		);
 		$this->db->insert('utilisateur', $data);
 		return ($this->db->affected_rows() != 1) ? false : true;
+
+		}
+		
 	}
 
 	public function list_utilisateur()
@@ -58,10 +82,16 @@ class Utilisateur_model extends CI_Model {
                 $salt = 'Suivi_T0p0*';
                 $cypted_password = crypt($password, $salt);
                 //var_dump($cypted_password);
-		$sql = "SELECT u.login, u.password, u.valide, t.labeltype FROM
+		$sql = "SELECT u.* , t.labeltype FROM
 		 utilisateur u INNER JOIN typeutilisateur t ON u.id_type_utilisateur = t.idtypeuser WHERE u.login = ? AND u.password = ?";
 		$query = $this->db->query($sql, array($login,$cypted_password));
 		return $query->result();
 	}
 
+	public function fetch_data(){
+		$query = $this->db->get("utilisateur ");
+		return $query->result();
+	}
+
 }
+

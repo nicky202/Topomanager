@@ -17,7 +17,7 @@ class Utilisateur extends CI_Controller {
 
 	public function login(){
             if(!$this->session->has_userdata('login'))
-		$this->load->view('authentification/login');
+				$this->load->view('authentification/login');
             else
                 redirect('dashboard');
 	}
@@ -39,6 +39,9 @@ class Utilisateur extends CI_Controller {
 		$data['success'] = $query;
 		if($query)
 			$this->load->view('authentification/login', $data);
+		// else{
+		// 	redirect('inscription');
+		// }
 	}
 
 	public function list_utilisateur(){
@@ -80,12 +83,22 @@ class Utilisateur extends CI_Controller {
 					$this->load->view('authentification/login', $data);
 				}else{
 					$this->session->set_userdata('login', $row->login);
+					$this->session->set_userdata('nom', $row->nom);
+					$this->session->set_userdata('photo', $row->photo);
+					$this->session->set_userdata('mail', $row->mail);
 					$this->session->set_userdata('groupe', $row->labeltype);
 					redirect('dashboard', 'refresh');
 				}
 			}
 		}
 
+	}
+
+	public function profil(){
+		$this->load->view('templates/header');
+		$this->load->view('templates/sidebar');
+		$this->load->view('profile/profile');
+		$this->load->view('templates/scripts');
 	}
 
 	public function deconnexion()
